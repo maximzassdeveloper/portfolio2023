@@ -1,0 +1,46 @@
+.title {
+  font-size: 46px;
+  text-align: left;
+  width: max-content;
+  position: relative;
+  z-index: 1;
+  div {
+    line-height: 1em;
+    position: relative;
+    color: inherit;
+    font-size: inherit;
+    z-index: 1;
+  }
+}
+
+h2.title {
+  display: block;
+  font-size: 40px;
+  text-transform: uppercase;
+  color: var(--grey) !important;
+  margin-bottom: 60px;
+}
+
+.splitText {
+  transform-origin: center top;
+  transform-style: preserve-3d;
+  perspective: 8000px;
+  perspective-origin: -100% 50%;
+  transform-origin: left bottom;
+  & > div {
+    transform: rotateX(-80deg) translateY(50%);
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 36px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .title {
+    font-size: 30px;
+  }
+}

@@ -1,0 +1,11 @@
+.arrow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  transition: .1s;
+}

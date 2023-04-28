@@ -1,0 +1,17 @@
+.link {
+  position: relative;
+  width: max-content;
+  line-height: 1.5em;
+  transition: 0.2s;
+  &:hover {
+    .arrow {
+      transform: translate(3px, -3px);
+    }
+  }
+}
+
+.arrow {
+  display: inline-block;
+  margin-left: 7px;
+  transition: 0.2s;
+}

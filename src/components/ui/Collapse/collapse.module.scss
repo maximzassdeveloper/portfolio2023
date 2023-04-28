@@ -1,0 +1,32 @@
+.collapse {
+  position: relative;
+  width: 400px;
+  max-width: 100%;
+  user-select: none;
+
+  &.isOpen {
+    .toggler {
+      svg {
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
+
+.header {
+  padding: 10px 0;
+}
+
+.content {
+  width: inherit;
+  overflow: hidden;
+  transition: height 0.2s;
+  font-size: 20px;
+  line-height: 1.25em;
+}
+
+.toggler {
+  svg {
+    transition: 0.2s;
+  }
+}

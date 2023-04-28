@@ -1,0 +1,66 @@
+.work {
+  display: block;
+  width: 100%;
+  padding: 30px 0;
+  border-top: 1px solid var(--line-grey);
+  transition: background 0.2s;
+
+  &:last-child {
+    border-bottom: 1px solid var(--line-grey);
+  }
+
+  &:hover {
+    background: rgba(#fff, 0.05);
+  }
+}
+
+.title {
+  font-size: 30px;
+}
+
+@media screen and (max-width: 992px) {
+  .work {
+    height: 100%;
+  }
+  .image {
+    padding: 0 20px;
+    height: 400px;
+    div {
+      height: 470px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .image img {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .content {
+    padding-left: 5%;
+  }
+  .title {
+    font-size: 24px;
+  }
+  .image {
+    height: 350px;
+    div {
+      height: 350px;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .title {
+    font-size: 22px;
+  }
+  .image {
+    padding: 0 2%;
+    height: 230px;
+    div {
+      height: 230px;
+    }
+  }
+}
