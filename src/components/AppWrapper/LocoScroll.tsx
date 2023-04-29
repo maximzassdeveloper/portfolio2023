@@ -22,16 +22,17 @@ export const LocoScroll: FC<LocoScrollProps> = memo(({ scrollContainer }) => {
       el: scrollContainer.current,
       smooth: true,
       multiplier: 0.7,
-      // tablet: {
-      //   smooth: true,
-      //   breakpoint: 992,
-      // },
-      // smartphone: {
-      //   smooth: true,
-      // },
+      touchMultiplier: 6,
       tablet: {
+        smooth: true,
         breakpoint: 992,
       },
+      smartphone: {
+        smooth: true,
+      },
+      // tablet: {
+      //   breakpoint: 992,
+      // },
     } as LocomotiveScroll.InstanceOptions)
 
     return { locoScroll, scrollContainer }

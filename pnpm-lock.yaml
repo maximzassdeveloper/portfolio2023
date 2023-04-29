@@ -16,6 +16,7 @@ specifiers:
   react: 18.2.0
   react-dom: 18.2.0
   sass: ^1.61.0
+  simplex-noise: ^4.0.1
   split-type: ^0.3.3
   three: ^0.84.0
   typescript: 5.0.4
@@ -28,6 +29,7 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   sass: 1.61.0
+  simplex-noise: 4.0.1
   split-type: 0.3.3
   three: 0.84.0
 
@@ -3808,6 +3810,10 @@ packages:
       get-intrinsic: 1.2.0
       object-inspect: 1.12.3
     dev: true
+
+  /simplex-noise/4.0.1:
+    resolution: {integrity: sha512-zl/+bdSqW7HJOQ0oDbxrNYaF4F5ik0i7M6YOYmEoIJNtg16NpvWaTTM1Y7oV/7T0jFljawLgYPS81Uu2rsfo1A==}
+    dev: false
 
   /slash/3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}

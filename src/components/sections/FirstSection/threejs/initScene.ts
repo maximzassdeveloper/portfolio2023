@@ -20,7 +20,7 @@ export function initScene(canvas: HTMLCanvasElement): [Scene, WebGLRenderer, Per
   const scene = new Scene()
 
   function getCameraZ() {
-    return window.innerWidth < 800 ? 40 : 20
+    return window.innerWidth < 800 ? 27 : 20
   }
   // scene.background = new Color(0x111111)
 

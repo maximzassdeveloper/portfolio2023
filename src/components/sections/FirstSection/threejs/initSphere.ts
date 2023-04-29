@@ -24,7 +24,11 @@ function func(u: number, v: number) {
 }
 
 export function initSphere(): [Mesh, Uniforms] {
-  const geometry = new SphereGeometry(2, 50, 50)
+  function getCountSegments() {
+    return window.innerWidth < 800 ? 25 : 40
+  }
+
+  const geometry = new SphereGeometry(2, getCountSegments(), getCountSegments())
   // const geometry = new ParametricGeometry(func, 50, 50)
 
   const uniforms: Uniforms = {
