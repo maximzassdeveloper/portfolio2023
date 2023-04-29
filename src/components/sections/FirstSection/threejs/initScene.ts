@@ -18,11 +18,15 @@ export function initScene(canvas: HTMLCanvasElement): [Scene, WebGLRenderer, Per
 
   // SCENE
   const scene = new Scene()
+
+  function getCameraZ() {
+    return window.innerWidth < 800 ? 40 : 20
+  }
   // scene.background = new Color(0x111111)
 
   // CAMERA
   const camera = new PerspectiveCamera(16, sizes.width / sizes.height, 1, 3500)
-  camera.position.z = 20
+  camera.position.z = getCameraZ()
 
   // LIGHT
   const pointLight3 = new PointLight(0x2a5ee8, 0, 60) // 2
@@ -165,6 +169,8 @@ export function initScene(canvas: HTMLCanvasElement): [Scene, WebGLRenderer, Per
     // Update sizes
     sizes.width = window.innerWidth
     sizes.height = window.innerHeight
+
+    camera.position.z = getCameraZ()
 
     // Update camera
     camera.aspect = sizes.width / sizes.height
