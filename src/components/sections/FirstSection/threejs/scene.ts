@@ -23,6 +23,9 @@ export function initThreeJsScene(canvas: HTMLCanvasElement) {
   const sphereVerticesArray: THREE.Vector3[] = []
   const sphereVerticesNormArray: THREE.Vector3[] = []
 
+  console.log(sphere.geometry)
+
+  const initVector = new Vector3()
   // @ts-ignore
   for (let i = 0; i < sphere.geometry.vertices.length; i += 1) {
     // @ts-ignore
@@ -184,39 +187,14 @@ export function initThreeJsScene(canvas: HTMLCanvasElement) {
   //   0
   // )
 
-  function sphereToPlane() {
-    const width = 100
-    // @ts-ignore
-    for (let i = 0; i < sphere.geometry.vertices.length; i++) {
-      // @ts-ignore
-      const vertex = sphere.geometry.vertices[i]
+  // const noise3D = createNoise3D()
+  // console.log(noise3D(1, 3, 4))
+  // console.log(noise3D)
 
-      // vertex.x = Math.sin(vertex.x)
-      // vertex.y = vertex.y
-      // vertex.z = vertex.z
-      sphereVerticesArray[i] = new Vector3(
-        Math.sin(vertex.x),
-        sphereVerticesArray[i].y,
-        sphereVerticesArray[i].z
-      )
-      // if (i % 3 === 0) {
-      //   // @ts-ignore
-      //   sphere.geometry.vertices[i] = { x: 1, y: i, z: 1 }
-      // } else {
-      //   // @ts-ignore
-      //   sphere.geometry.vertices[i] = { x: 1, y: 1, z: 1 }
-      // }
-    }
-  }
-
-  const noise3D = createNoise3D()
-  console.log(noise3D(1, 3, 4))
-  console.log(noise3D)
-
-  const cashed: Record<number, number> = {}
+  // const cashed: Record<number, number> = {}
   let countCashed = 0
   type VertexMapKey = { vertex: Vector3; time: number }
-  const vertexMap = new Map<VertexMapKey, number>()
+  // const vertexMap = new Map<VertexMapKey, number>()
 
   function animate() {
     // const currentTime = Date.now()
@@ -242,28 +220,21 @@ export function initThreeJsScene(canvas: HTMLCanvasElement) {
     // sphere.rotation.z += 0.002
 
     //@ts-ignore
-
-    for (var i = 0; i < sphere.geometry.vertices.length; i += 1) {
+    for (let i = 0; i < sphere.geometry.vertices.length; i += 1) {
       // @ts-ignore
       const vertex = sphere.geometry.vertices[i]
       vertex.normalize()
-
-      const mapKey: VertexMapKey = { vertex, time }
-
+      // const mapKey: VertexMapKey = { vertex, time }
       // const cashedValue = vertexMap.get(mapKey)
+      const value =
+        0.75 *
+        perlin(
+          noiseAmount * vertex.x + time,
+          noiseAmount * vertex.y + time,
+          noiseAmount * vertex.z + time
+        )
 
-      let value = undefined
-      if (value === undefined) {
-        value =
-          0.75 *
-          perlin(
-            noiseAmount * vertex.x + time,
-            noiseAmount * vertex.y + time,
-            noiseAmount * vertex.z + time
-          )
-        // vertexMap.set(mapKey, value)
-      }
-
+      // vertexMap.set(mapKey, value)
       vertex.x = sphereVerticesArray[i].x + sphereVerticesNormArray[i].x * value * noiseAmount
       vertex.y = sphereVerticesArray[i].y + sphereVerticesNormArray[i].y * value * noiseAmount
       vertex.z = sphereVerticesArray[i].z + sphereVerticesNormArray[i].z * value * noiseAmount

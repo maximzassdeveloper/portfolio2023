@@ -9,6 +9,7 @@ export const FirstSection: FC = () => {
 
   useEffect(() => {
     // init webgl sphere
+    console.log('render')
     if (canvasRef.current) {
       initThreeJsScene(canvasRef.current)
     }

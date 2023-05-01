@@ -7,20 +7,13 @@ import {
   Color,
   ParametricGeometry,
   Vector3,
+  MeshBasicMaterial,
+  MeshLambertMaterial,
+  LOD,
 } from 'three'
 
 interface Uniforms {
   time: { type: '1f'; value: number }
-}
-
-function func(u: number, v: number) {
-  let alpha = Math.PI * 2 * u
-  let theta = Math.PI * 2 * v
-  let x = Math.sin(alpha) * Math.cos(theta)
-  let y = Math.sin(alpha) * Math.cos(theta)
-  let z = Math.sin(alpha) * Math.cos(theta)
-
-  return new Vector3(u, 0, v)
 }
 
 export function initSphere(): [Mesh, Uniforms] {
@@ -48,11 +41,10 @@ export function initSphere(): [Mesh, Uniforms] {
 
   const sphereMaterial = new MeshStandardMaterial({
     color: new Color(0xffffff),
-    transparent: true,
+    // alphaTest: 0,
+    // transparent: true,
     wireframe: true,
   })
-
-  // const sphereMaterial = new MeshStandardMaterial({})
 
   // MESH
   const sphere = new Mesh(geometry, sphereMaterial)

@@ -50,6 +50,10 @@ export function initScene(canvas: HTMLCanvasElement): [Scene, WebGLRenderer, Per
   scene.add(pointLight5)
   scene.add(pointLight6)
 
+  camera.far = 60
+  camera.updateProjectionMatrix()
+  console.log(camera.far)
+
   gsap.to(pointLight3, {
     intensity: 2,
     duration: 2,
@@ -167,10 +171,10 @@ export function initScene(canvas: HTMLCanvasElement): [Scene, WebGLRenderer, Per
   // )
 
   // RENDERER
-  const renderer = new WebGLRenderer({ canvas, antialias: true, alpha: true })
+  const renderer = new WebGLRenderer({ canvas, antialias: false, alpha: true })
   renderer.setSize(sizes.width, sizes.height)
   renderer.setPixelRatio(window.devicePixelRatio)
-  renderer.shadowMap.enabled = true
+  // renderer.shadowMap.enabled = true
 
   // Listeners
   window.addEventListener('resize', () => {
