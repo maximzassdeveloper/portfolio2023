@@ -12,8 +12,8 @@ import { gsap, Power1 } from 'gsap'
 export function initScene(canvas: HTMLCanvasElement): [Scene, WebGLRenderer, PerspectiveCamera] {
   // SIZES
   const sizes = {
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: getWidth(),
+    height: getHeight(),
   }
 
   // SCENE
@@ -21,6 +21,14 @@ export function initScene(canvas: HTMLCanvasElement): [Scene, WebGLRenderer, Per
 
   function getCameraZ() {
     return window.innerWidth < 800 ? 27 : 20
+  }
+
+  function getWidth() {
+    return window.innerWidth < 600 ? 600 : window.innerWidth
+  }
+
+  function getHeight() {
+    return window.innerHeight < 400 ? 400 : window.innerHeight
   }
   // scene.background = new Color(0x111111)
 
@@ -101,7 +109,7 @@ export function initScene(canvas: HTMLCanvasElement): [Scene, WebGLRenderer, Per
         trigger: '#experience',
         scrub: true,
         start: 'top bottom',
-        end: 'bottom bottom',
+        end: '700px bottom',
         // markers: true,
       },
       ease: Power1.easeInOut,
@@ -167,8 +175,8 @@ export function initScene(canvas: HTMLCanvasElement): [Scene, WebGLRenderer, Per
   // Listeners
   window.addEventListener('resize', () => {
     // Update sizes
-    sizes.width = window.innerWidth
-    sizes.height = window.innerHeight
+    sizes.width = getWidth()
+    sizes.height = getHeight()
 
     camera.position.z = getCameraZ()
 

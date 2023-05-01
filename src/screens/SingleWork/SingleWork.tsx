@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import { motion } from 'framer-motion'
 import { NextWork } from './NextWork/NextWork'
 import WorkTemplate from './work-templates'
 import { Container, CustomLink, Typography, Main, CustomImage } from '@/components/ui'
@@ -25,8 +24,7 @@ export const SingleWork: FC<SingleWorkProps> = ({ work, nextWork }) => {
         data-scroll-section
       >
         <div className={s.bgWrapper}>
-          <motion.img
-            layoutId={work.slug}
+          <img
             src={imgPath(work.preview)}
             alt={work.name}
           />

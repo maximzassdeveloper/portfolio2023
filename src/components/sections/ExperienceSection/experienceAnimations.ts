@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 import { gsap } from 'gsap'
-import s from './experience.module.scss'
+import sItem from './ExperienceItem/experience-item.module.scss'
 
 export const useExperienceAnimations = () => {
   useEffect(() => {
-    const blocks = document.querySelectorAll('.' + s.item)
+    const blocks = document.querySelectorAll('.' + sItem.item)
 
     // glow first block
     gsap.to(blocks[0], {
@@ -13,14 +13,33 @@ export const useExperienceAnimations = () => {
         start: 'top 80%',
       },
       onStart() {
-        blocks[0].classList.add(s.itemAnimated)
+        blocks[0].classList.add(sItem.animated)
       },
     })
 
     // glow blocks when the line reached them
+    // const glowTimelineOptions: gsap.TimelineVars = {
+    //   scrollTrigger: {
+    //     trigger: '#experienceBlocks',
+    //     start: 'top 40%',
+    //     end: 'bottom 90%',
+    //     scrub: true,
+    //   },
+    // }
+    // let tl = gsap.timeline(glowTimelineOptions)
+
+    // const resizeObserver = new ResizeObserver((mutations) => {
+    //   mutations.forEach(() => {})
+
+    //   const b = document.querySelector('#experienceBlocks')
+    //   if (b) {
+    //     resizeObserver.observe(b)
+    //   }
+    // })
+
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: '#experience',
+        trigger: '#experienceBlocks',
         start: 'top 40%',
         end: 'bottom 90%',
         scrub: true,
@@ -30,12 +49,13 @@ export const useExperienceAnimations = () => {
     for (let i = 0; i < blocks.length - 1; i++) {
       const block = blocks[i]
 
-      const line = block.querySelector('.' + s.itemLine)
+      const line = block.querySelector('.' + sItem.line)
+      if (!line) continue
       tl.to(line, {
-        height: '100%',
+        height: 'calc(100% - 40px)',
         onComplete() {
           const nextBlock = blocks[i + 1]
-          nextBlock?.classList.add(s.itemAnimated)
+          nextBlock?.classList.add(sItem.animated)
         },
       })
     }

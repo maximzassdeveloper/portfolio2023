@@ -45,7 +45,7 @@ export const headerAnimations = () => {
         x: 0,
         ease: Expo.easeIn,
       })
-      gsap.to(`.${styles.mobile} li a`, {
+      gsap.to(`.${styles.mobile} li a span`, {
         duration: 0.2,
         y: 0,
         delay: 0.2,

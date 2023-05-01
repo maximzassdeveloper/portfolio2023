@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { Section, Typography } from '@/components/ui'
 import { WorkList } from './WorkList/WorkList'
-import s from './works.module.scss'
 import { classNames } from '@/shared/libs/classNames'
+import s from './works.module.scss'
 
 interface WorkSectionProps {
   className?: string

@@ -1,11 +1,12 @@
 .title {
   font-size: 46px;
+  line-height: 1.2em;
   text-align: left;
   width: max-content;
   position: relative;
   z-index: 1;
   div {
-    line-height: 1em;
+    line-height: inherit;
     position: relative;
     color: inherit;
     font-size: inherit;
@@ -33,6 +34,18 @@ h2.title {
   }
 }
 
+@media screen and (max-width: 1200px) {
+  h2.title {
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  h2.title {
+    margin-bottom: 40px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .title {
     font-size: 36px;
@@ -42,5 +55,15 @@ h2.title {
 @media screen and (max-width: 500px) {
   .title {
     font-size: 30px;
+    max-width: 100%;
+  }
+
+  h2.title {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  h3.title {
+    font-size: 20px;
   }
 }

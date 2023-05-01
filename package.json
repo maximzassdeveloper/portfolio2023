@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "framer-motion": "^10.12.4",
     "gsap": "^3.11.5",
     "locomotive-scroll": "^4.1.4",
     "next": "13.3.0",

@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import { createPortal } from 'react-dom'
-import { AnimatePresence, motion } from 'framer-motion'
 import { useAppContext } from '@/shared/context'
 import { IWork } from '@/shared/types'
 import { imgPath } from '@/shared/libs/helper'
@@ -20,33 +19,25 @@ export const WorkHover: FC<WorkHoverProps> = (props) => {
   }
 
   return createPortal(
-    <AnimatePresence>
+    <>
       {workIndex !== -1 && (
         <div className={s.hoverImages}>
-          <motion.div
+          <div
             className={s.hoverImagesContainer}
             style={{ top: `${-workIndex * 100}%` }}
-            // initial={{ opacity: 0 }}
-            // animate={{ opacity: 1 }}
-            // exit={{ opacity: 0 }}
-            transition={{
-              type: 'spring',
-              duration: 0.3,
-            }}
           >
             {works.map((work) => (
-              <motion.img
-                layoutId={work.slug}
+              <img
                 key={work.id}
                 className={s.hoverImage}
                 src={imgPath(work.preview)}
                 alt={work.name}
               />
             ))}
-          </motion.div>
+          </div>
         </div>
       )}
-    </AnimatePresence>,
+    </>,
     cursorRef.current
   )
 }

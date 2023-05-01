@@ -38,7 +38,7 @@ export function initThreeJsScene(canvas: HTMLCanvasElement) {
   let startTime = Date.now()
   let time = 1
   let way = 0
-  let noiseAmount = 0.8
+  let noiseAmount = 1.2
 
   let stop = false
   let frameCount = 0
@@ -136,7 +136,7 @@ export function initThreeJsScene(canvas: HTMLCanvasElement) {
     scrollTrigger: {
       trigger: '#experience',
       start: 'top bottom',
-      end: 'bottom center',
+      end: '700px center',
       scrub: true,
     },
     ease: Power1.easeInOut,
@@ -232,9 +232,9 @@ export function initThreeJsScene(canvas: HTMLCanvasElement) {
       way = 0
     }
     if (way === 0) {
-      time += 0.01
+      time += 0.014
     } else {
-      time -= 0.01
+      time -= 0.014
     }
 
     // sphere.rotation.x += 0.002
@@ -256,7 +256,7 @@ export function initThreeJsScene(canvas: HTMLCanvasElement) {
       if (value === undefined) {
         value =
           0.75 *
-          noise3D(
+          perlin(
             noiseAmount * vertex.x + time,
             noiseAmount * vertex.y + time,
             noiseAmount * vertex.z + time

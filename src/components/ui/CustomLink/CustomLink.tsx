@@ -2,7 +2,7 @@ import { FC, PropsWithChildren, useRef } from 'react'
 import Link, { LinkProps } from 'next/link'
 import { useCursorHover } from '@/shared/hooks/useCursorHover'
 import { classNames } from '@/shared/libs/classNames'
-import BlankArrowIcon from '@/shared/assets/icons/blank-arrow.svg'
+import { imgPath } from '@/shared/libs/helper'
 import s from './link.module.scss'
 
 interface CustomLinkProps extends LinkProps {
@@ -47,9 +47,11 @@ export const CustomLink: FC<PropsWithChildren<CustomLinkProps>> = ({
             className={s.arrow}
             style={{ marginLeft: `${arrowSize / 2}px` }}
           >
-            <BlankArrowIcon
-              height={arrowSize}
+            <img
+              src={imgPath('/blank-arrow.svg')}
+              alt=''
               width={arrowSize}
+              height={arrowSize}
             />
           </div>
         )}

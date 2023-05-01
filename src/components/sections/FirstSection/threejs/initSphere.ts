@@ -25,11 +25,10 @@ function func(u: number, v: number) {
 
 export function initSphere(): [Mesh, Uniforms] {
   function getCountSegments() {
-    return window.innerWidth < 800 ? 25 : 40
+    return window.innerWidth < 800 ? 35 : 40
   }
 
   const geometry = new SphereGeometry(2, getCountSegments(), getCountSegments())
-  // const geometry = new ParametricGeometry(func, 50, 50)
 
   const uniforms: Uniforms = {
     time: { type: '1f', value: 0 },
@@ -57,6 +56,9 @@ export function initSphere(): [Mesh, Uniforms] {
 
   // MESH
   const sphere = new Mesh(geometry, sphereMaterial)
+  if (window.innerWidth < 800) {
+    sphere.position.y = -0.5
+  }
 
   return [sphere, uniforms]
 }

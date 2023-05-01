@@ -1,8 +1,7 @@
 import type { AppProps } from 'next/app'
-import { AppWrapper } from '@/components/AppWrapper'
+import { AppWrapper } from '@/components/app'
 
 import '@/styles/global.scss'
-// import '@/styles/animations.scss'
 import 'locomotive-scroll/dist/locomotive-scroll.css'
 
 function MyApp({ Component, pageProps }: AppProps) {

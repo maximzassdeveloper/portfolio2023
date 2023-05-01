@@ -27,7 +27,6 @@ export const FirstSection: FC = () => {
             animate={{ splitText: false }}
             lineClassName={s.line}
             data-scroll
-            data-scroll-speed='2'
           >
             <div className={s.line}>Максим</div>
             <div className={s.line}>Засс</div>
@@ -38,7 +37,6 @@ export const FirstSection: FC = () => {
             animate={{ splitText: false }}
             lineClassName={s.line}
             data-scroll
-            data-scroll-speed='2'
           >
             <div className={s.line}>Фронтенд</div>
             <div className={s.line}>Разработчик</div>

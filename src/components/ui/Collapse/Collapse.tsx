@@ -1,7 +1,8 @@
 import { CSSProperties, ReactNode, useEffect, useRef, useState } from 'react'
 import { classNames } from '@/shared/libs/classNames'
-import PlusIcon from '@/shared/assets/icons/plus.svg'
+import { imgPath } from '@/shared/libs/helper'
 import s from './collapse.module.scss'
+import { useCursorHover } from '@/shared/hooks/useCursorHover'
 
 interface CollapseProps {
   title?: string
@@ -16,6 +17,8 @@ export const Collapse = (props: CollapseProps) => {
   const [isOpen, setIsOpen] = useState(defaultIsOpen)
   const [contentHeight, setContentHeight] = useState(0)
   const contentRef = useRef<HTMLDivElement>(null)
+  const togglerRef = useRef<HTMLDivElement>(null)
+  useCursorHover({ el: togglerRef.current, cursorClass: 'hoverLink' })
 
   const togglerHandler = () => {
     setIsOpen((prev) => !prev)
@@ -26,9 +29,16 @@ export const Collapse = (props: CollapseProps) => {
 
     const { height } = contentRef.current.getBoundingClientRect()
     setContentHeight(height)
-    contentRef.current.style.position = 'static'
-    contentRef.current.style.visibility = 'visible'
-    contentRef.current.style.zIndex = '1'
+
+    setTimeout(() => {
+      if (!contentRef.current) return
+      contentRef.current.style.position = 'static'
+      contentRef.current.style.visibility = 'visible'
+      contentRef.current.style.opacity = '1'
+      contentRef.current.style.zIndex = '1'
+    }, 0)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const customHeight = contentHeight ? (isOpen ? contentHeight + 'px' : 0 + 'px') : undefined
@@ -36,6 +46,7 @@ export const Collapse = (props: CollapseProps) => {
   const cssForHide: CSSProperties = {
     visibility: !defaultIsOpen ? 'hidden' : undefined,
     position: !defaultIsOpen ? 'absolute' : undefined,
+    opacity: !defaultIsOpen ? '0' : undefined,
     zIndex: !defaultIsOpen ? '-100' : undefined,
   }
 
@@ -44,10 +55,15 @@ export const Collapse = (props: CollapseProps) => {
       <div className={s.header}>
         {title}
         <div
+          ref={togglerRef}
           className={s.toggler}
           onClick={togglerHandler}
         >
-          <PlusIcon />
+          <img
+            src={imgPath('/plus.svg')}
+            alt=''
+          />
+          Подробнее
         </div>
       </div>
       <div

@@ -1,13 +1,13 @@
-import { FC, useMemo } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { Typography, SocialList, Section } from '@/components/ui'
 import s from './contact.module.scss'
 
 export const ContactSection: FC = () => {
-  const linkArrowSize = useMemo(() => {
-    if (typeof window !== 'undefined') {
-      return window.innerWidth > 600 ? 20 : 14
-    } else {
-      return 20
+  const [linkArrowSize, setLinkArrowSize] = useState(20)
+
+  useEffect(() => {
+    if (window.innerWidth < 600) {
+      setLinkArrowSize(14)
     }
   }, [])
 

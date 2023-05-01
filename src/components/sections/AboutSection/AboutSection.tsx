@@ -25,7 +25,6 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
               className={s.title}
               animate
               data-scroll
-              data-scroll-speed='-0.5'
             >
               /Обо мне
             </Typography>
@@ -36,7 +35,6 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
               className={s.text}
               animate
               data-scroll
-              data-scroll-speed='-0.5'
             >
               Я всегда хотел создавать что-то новое и интересное. Занятие веб-разработкой многое
               изменило для меня, и с тех пор я стараюсь продвигать свою работу к новым горизонтам и
@@ -48,7 +46,6 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
               className={s.text}
               animate
               data-scroll
-              data-scroll-speed='-0.5'
             >
               Для меня важно, чтобы сайт был максимально удобным, лёгким и эстетичным. Сайт должен
               приносить пользу и помогать решать проблемы пользователей.
@@ -59,7 +56,6 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
               className={s.text}
               animate
               data-scroll
-              data-scroll-speed='-0.5'
             >
               Я занимаюсь веб-разработкой более 3-х лет и успел поработать с разными технологиями.
             </Typography>

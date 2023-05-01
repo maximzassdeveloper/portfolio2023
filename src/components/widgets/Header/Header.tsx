@@ -28,11 +28,11 @@ export const Header: FC = () => {
   const burgerHandler = () => {
     if (isMobileMenuOpen) {
       animations.closeMobileMenu()
-      document.documentElement.style.overflowY = 'auto'
+      // document.documentElement.style.overflowY = 'auto'
     } else {
       animations.openMobileMenu()
       header.current?.classList.remove(s.hidden)
-      document.documentElement.style.overflowY = 'hidden'
+      // document.documentElement.style.overflowY = 'hidden'
     }
     setIsMobileMenuOpen((prev) => !prev)
   }
