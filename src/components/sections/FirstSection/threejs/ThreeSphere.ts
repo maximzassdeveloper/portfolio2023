@@ -18,7 +18,7 @@ export class ThreeSphere {
 
   private initMaterial() {
     this.material = new MeshStandardMaterial({
-      color: new Color(0xffffff),
+      // color: new Color(0xffffff),
       wireframe: true,
     })
   }

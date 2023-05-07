@@ -41,7 +41,7 @@ export const CustomCursor: FC = () => {
       document.removeEventListener('mousedown', onDocumentMouseDown)
       document.removeEventListener('mouseup', onDocumentMouseUp)
     }
-  }, [])
+  }, [onDocumentMouseMove, onDocumentMouseDown, onDocumentMouseUp])
 
   return (
     <div
