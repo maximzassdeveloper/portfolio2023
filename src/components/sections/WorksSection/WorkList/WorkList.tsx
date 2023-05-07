@@ -1,13 +1,16 @@
 import { FC, useState } from 'react'
 import { Work } from '../Work/Work'
 import { useAppContext } from '@/shared/context'
-import { workService } from '@/shared/services/workService'
 import { WorkHover } from '../WorkHover/WorkHover'
+import { IWork } from '@/shared/types'
 import s from './work-list.module.scss'
 
-const works = workService.getWorks()
+interface WorkListProps {
+  works: IWork[]
+}
 
-export const WorkList: FC = () => {
+export const WorkList: FC<WorkListProps> = (props) => {
+  const { works } = props
   const { cursorRef } = useAppContext()
   const [workIndex, setWorkIndex] = useState<number>(-1)
 

@@ -8,7 +8,7 @@ import s from './single-work.module.scss'
 
 interface SingleWorkProps {
   work: IWork
-  nextWork?: IWork
+  nextWork: IWork | null
 }
 
 export const SingleWork: FC<SingleWorkProps> = ({ work, nextWork }) => {

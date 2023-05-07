@@ -1,22 +1,24 @@
-import { works } from '@/shared/data'
+import axios from 'axios'
+import { IWork } from '../types'
+
+const DEV_BASE_URL = 'http://localhost:3000/'
+const PROD_BASE_URL = 'https://maximzass.ru/'
+const BASE_URL = process.env.NODE_ENV === 'production' ? PROD_BASE_URL : DEV_BASE_URL
+const API_URL = `${BASE_URL}/api`
+
+axios.defaults.baseURL = API_URL
+
+interface GetWorkResponse {
+  work: IWork
+  nextWork: IWork | null
+}
 
 export const workService = {
-  getWorks() {
-    return works
+  async getWorks() {
+    return axios.get<IWork[]>(`/works`)
   },
-  getWork(slug: string) {
-    return works.find((i) => i.slug === slug)
-  },
-  getNextWork(slug: string) {
-    const currentIndex = works.findIndex((i) => i.slug === slug)
 
-    switch (currentIndex) {
-      case -1:
-        return undefined
-      case works.length - 1:
-        return works[0]
-      default:
-        return works[currentIndex + 1]
-    }
+  async getWork(slug: string) {
+    return axios.get<GetWorkResponse>(`/work/${slug}`)
   },
 }

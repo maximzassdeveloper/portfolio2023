@@ -1,10 +1,11 @@
-import { FC, useEffect, RefObject, memo, useCallback } from 'react'
+import { FC, useEffect, RefObject, memo, useCallback, useState } from 'react'
 import { useRouter } from 'next/router'
 import { gsap } from 'gsap'
 
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { CustomEase } from 'gsap/dist/CustomEase'
 import { useAppContext } from '@/shared/context'
+import { useWindowSize } from '@/shared/hooks/useWindowSize'
 
 gsap.registerPlugin(ScrollTrigger, CustomEase)
 
@@ -15,6 +16,7 @@ interface LocoScrollProps {
 export const LocoScroll: FC<LocoScrollProps> = memo(({ scrollContainer }) => {
   const { setLocoScroll, locoScroll: locoScrollFromContext } = useAppContext()
   const { asPath } = useRouter()
+  const windowSize = useWindowSize()
 
   const locoScrollInit = useCallback(() => {
     const LocomotiveScroll = require('locomotive-scroll').default
@@ -30,9 +32,6 @@ export const LocoScroll: FC<LocoScrollProps> = memo(({ scrollContainer }) => {
       smartphone: {
         smooth: true,
       },
-      // tablet: {
-      //   breakpoint: 992,
-      // },
     } as LocomotiveScroll.InstanceOptions)
 
     return { locoScroll, scrollContainer }
@@ -70,7 +69,7 @@ export const LocoScroll: FC<LocoScrollProps> = memo(({ scrollContainer }) => {
       locoScroll.destroy()
       setLocoScroll(null)
     }
-  }, [asPath, setLocoScroll, scrollContainer, locoScrollInit])
+  }, [windowSize, asPath, setLocoScroll, scrollContainer, locoScrollInit])
 
   useEffect(() => {
     locoScrollFromContext && locoScrollFromContext.scrollTo(0, { duration: 0 })

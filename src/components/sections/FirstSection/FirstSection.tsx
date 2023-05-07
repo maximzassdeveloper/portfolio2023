@@ -1,19 +1,25 @@
 import { FC, useEffect, useRef } from 'react'
 import { Typography, Section } from '@/components/ui'
-import { initThreeJsScene } from './threejs/scene'
 import { classNames } from '@/shared/libs/classNames'
+import { useWindowSize } from '@/shared/hooks/useWindowSize'
+import { ThreeInit } from './threejs/ThreeInit'
 import s from './first.module.scss'
 
 export const FirstSection: FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const threeInit = useRef<ThreeInit | null>(null)
+  const windowSize = useWindowSize()
 
   useEffect(() => {
     // init webgl sphere
-    console.log('render')
     if (canvasRef.current) {
-      initThreeJsScene(canvasRef.current)
+      threeInit.current = new ThreeInit(canvasRef.current)
     }
   }, [])
+
+  useEffect(() => {
+    threeInit.current?.gsapAnimations()
+  }, [windowSize])
 
   return (
     <>

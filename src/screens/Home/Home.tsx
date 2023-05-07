@@ -7,14 +7,19 @@ import {
   WorksSection,
 } from '@/components/sections'
 import { Main } from '@/components/ui'
+import { IWork } from '@/shared/types'
 
-export const Home: FC = () => {
+interface HomeProps {
+  works: IWork[]
+}
+
+export const Home: FC<HomeProps> = ({ works }) => {
   return (
     <Main>
       <FirstSection />
       <AboutSection />
       <ExperienceSection />
-      <WorksSection />
+      <WorksSection works={works} />
       <ContactSection />
     </Main>
   )

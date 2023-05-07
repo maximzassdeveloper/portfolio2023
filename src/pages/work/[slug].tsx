@@ -5,7 +5,7 @@ import { IWork } from '@/shared/types'
 
 interface WorkPageProps {
   work: IWork
-  nextWork?: IWork
+  nextWork: IWork | null
 }
 
 const WorkPage: NextPage<WorkPageProps> = ({ work, nextWork }) => {
@@ -20,8 +20,8 @@ const WorkPage: NextPage<WorkPageProps> = ({ work, nextWork }) => {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   try {
     const slug = `${params?.slug}`
-    const work = workService.getWork(slug)
-    const nextWork = workService.getNextWork(slug)
+    const response = await workService.getWork(slug)
+    const { work, nextWork } = response.data
 
     if (!work) {
       return { notFound: true }

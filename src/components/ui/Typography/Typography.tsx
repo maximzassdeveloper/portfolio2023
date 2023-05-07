@@ -29,10 +29,18 @@ export const Typography = (props: TypographyProps) => {
     if (!animate || !ref.current) return
     if (typeof animate === 'object' && !animate.splitText) return
 
-    new SplitType(ref.current, {
+    const text = new SplitType(ref.current, {
       types: 'lines',
       lineClass: classNames('line', lineClassName),
     })
+
+    const resizeObserver = new ResizeObserver(() => {
+      text.split({
+        types: 'lines',
+        lineClass: classNames('line', lineClassName),
+      })
+    })
+    resizeObserver.observe(document.body)
   }, [animate, lineClassName])
 
   const classes = classNames(className, {

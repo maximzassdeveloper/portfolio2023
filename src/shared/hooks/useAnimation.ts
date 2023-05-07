@@ -1,13 +1,24 @@
 import { useEffect } from 'react'
 import { useAppContext } from '../context'
+import { useLatest } from './useLatest'
 
-export const useAnimation = (animation: () => void, animate: boolean = true) => {
+export const useAnimation = (callback: (...args: any[]) => void, animate: boolean = true) => {
   const { locoScroll } = useAppContext()
+  const latestCallback = useLatest(callback)
 
   useEffect(() => {
-    if (!!locoScroll && animate) {
-      animation()
+    const handler = () => {
+      latestCallback.current()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [locoScroll, animate])
+
+    if (!!locoScroll && animate) {
+      handler()
+    }
+
+    window.addEventListener('resize', handler)
+
+    return () => {
+      window.removeEventListener('resize', handler)
+    }
+  }, [latestCallback, locoScroll, animate])
 }

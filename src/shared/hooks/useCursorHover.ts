@@ -1,6 +1,7 @@
-import { useEffect } from 'react'
-import styles from '@/components/ui/CustomCursor/cursor.module.scss'
+import { useCallback, useEffect } from 'react'
 import { useAppContext } from '../context'
+import { useLatest } from './useLatest'
+import styles from '@/components/ui/CustomCursor/cursor.module.scss'
 
 interface HookProps {
   el: HTMLElement | null
@@ -10,28 +11,34 @@ interface HookProps {
   active?: boolean
 }
 
-export const useCursorHover = ({
-  el,
-  cursorClass,
-  onMouseEnter,
-  onMouseLeave,
-  active = true,
-}: HookProps) => {
+export const useCursorHover = (props: HookProps) => {
+  const { el, active = true } = props
   const { cursorRef } = useAppContext()
+  const latestProps = useLatest(props)
 
-  const mouseEnterHandler = (e: MouseEvent) => {
-    if (cursorClass && styles[cursorClass]) {
-      cursorRef.current?.classList.add(styles[cursorClass])
-    }
-    onMouseEnter?.(e)
-  }
+  const mouseEnterHandler = useCallback(
+    (e: MouseEvent) => {
+      const { cursorClass, onMouseEnter } = latestProps.current
 
-  const mouseLeaveHandler = (e: MouseEvent) => {
-    if (cursorClass && styles[cursorClass]) {
-      cursorRef.current?.classList.remove(styles[cursorClass])
-    }
-    onMouseLeave?.(e)
-  }
+      if (cursorClass && styles[cursorClass]) {
+        cursorRef.current?.classList.add(styles[cursorClass])
+      }
+      onMouseEnter?.(e)
+    },
+    [latestProps, cursorRef]
+  )
+
+  const mouseLeaveHandler = useCallback(
+    (e: MouseEvent) => {
+      const { cursorClass, onMouseLeave } = latestProps.current
+
+      if (cursorClass && styles[cursorClass]) {
+        cursorRef.current?.classList.remove(styles[cursorClass])
+      }
+      onMouseLeave?.(e)
+    },
+    [latestProps, cursorRef]
+  )
 
   useEffect(() => {
     if (active) {
@@ -43,5 +50,5 @@ export const useCursorHover = ({
       el?.removeEventListener('mouseenter', mouseEnterHandler)
       el?.removeEventListener('mouseleave', mouseLeaveHandler)
     }
-  }, [el, active])
+  }, [el, active, mouseEnterHandler, mouseLeaveHandler])
 }
