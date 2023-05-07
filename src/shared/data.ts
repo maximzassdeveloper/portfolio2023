@@ -32,9 +32,6 @@ export const works: IWork[] = [
     color: '#C63636',
     role: ['Дизайн', 'Фронтенд'],
     stack: ['TypeScript', 'React'],
-    links: {
-      GitHub: 'https://github.com/maximzassdeveloper/ramp',
-    },
   },
   {
     id: 2,

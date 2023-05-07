@@ -12,6 +12,7 @@ interface CustomLinkProps extends LinkProps {
   arrowSize?: number
   blank?: boolean
   className?: string
+  containerClassName?: string
 }
 
 export const CustomLink: FC<PropsWithChildren<CustomLinkProps>> = ({
@@ -20,6 +21,7 @@ export const CustomLink: FC<PropsWithChildren<CustomLinkProps>> = ({
   animateOnHover = true,
   blank,
   className,
+  containerClassName,
   showArrow = false,
   arrowSize = 14,
   onClick,
@@ -32,6 +34,7 @@ export const CustomLink: FC<PropsWithChildren<CustomLinkProps>> = ({
     <Link
       href={href}
       passHref={blank}
+      className={containerClassName}
       target={blank ? '_blank' : '_self'}
       {...rest}
     >

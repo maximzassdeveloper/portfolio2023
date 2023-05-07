@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { WorksSection } from '@/components/sections'
 import { Main } from '@/components/ui'
 import { IWork } from '@/shared/types'
+import s from './works.module.scss'
 
 interface WorksProps {
   works: IWork[]
@@ -10,7 +11,10 @@ interface WorksProps {
 export const Works: FC<WorksProps> = ({ works }) => {
   return (
     <Main title='Работы'>
-      <WorksSection works={works} />
+      <WorksSection
+        className={s.works}
+        works={works}
+      />
     </Main>
   )
 }

@@ -5,7 +5,7 @@ import { imgPath } from '@/shared/libs/helper'
 import s from './next-work.module.scss'
 
 interface NextWorkProps {
-  work?: IWork
+  work: IWork | null
 }
 
 export const NextWork: FC<NextWorkProps> = ({ work }) => {
@@ -16,6 +16,7 @@ export const NextWork: FC<NextWorkProps> = ({ work }) => {
       <Container className={s.container}>
         <CustomLink
           className={s.link}
+          containerClassName={s.containerLink}
           href={`/work/${work.slug}`}
         >
           <div className={s.content}>

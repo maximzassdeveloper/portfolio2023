@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { NextWork } from './NextWork/NextWork'
 import WorkTemplate from './work-templates'
-import { Container, CustomLink, Typography, Main, CustomImage } from '@/components/ui'
+import { Container, CustomLink, Typography, Main } from '@/components/ui'
 import { IWork } from '@/shared/types'
 import { imgPath, isEmpty } from '@/shared/libs/helper'
 import s from './single-work.module.scss'
@@ -24,11 +24,7 @@ export const SingleWork: FC<SingleWorkProps> = ({ work, nextWork }) => {
         data-scroll-section
       >
         <div className={s.bgWrapper}>
-          <img
-            src={imgPath(work.preview)}
-            alt={work.name}
-          />
-          {/* <div
+          <div
             className={s.bg}
             style={{ backgroundImage: `url(${imgPath(work.preview)})` }}
           >
@@ -36,7 +32,7 @@ export const SingleWork: FC<SingleWorkProps> = ({ work, nextWork }) => {
               className={s.blurBg}
               style={{ backgroundImage: `url(${imgPath(work.preview)})` }}
             />
-          </div> */}
+          </div>
         </div>
 
         <Container>
