@@ -18,25 +18,6 @@ export const useExperienceAnimations = () => {
     })
 
     // glow blocks when the line reached them
-    // const glowTimelineOptions: gsap.TimelineVars = {
-    //   scrollTrigger: {
-    //     trigger: '#experienceBlocks',
-    //     start: 'top 40%',
-    //     end: 'bottom 90%',
-    //     scrub: true,
-    //   },
-    // }
-    // let tl = gsap.timeline(glowTimelineOptions)
-
-    // const resizeObserver = new ResizeObserver((mutations) => {
-    //   mutations.forEach(() => {})
-
-    //   const b = document.querySelector('#experienceBlocks')
-    //   if (b) {
-    //     resizeObserver.observe(b)
-    //   }
-    // })
-
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '#experienceBlocks',
