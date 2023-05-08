@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { IWork } from '../types'
 
-const DEV_BASE_URL = 'http://localhost:3000/'
-const PROD_BASE_URL = 'https://maximzass.ru/'
+const DEV_BASE_URL = 'http://localhost:3000'
+const PROD_BASE_URL = 'https://maximzass.ru'
 const BASE_URL = process.env.NODE_ENV === 'production' ? PROD_BASE_URL : DEV_BASE_URL
 const API_URL = `${BASE_URL}/api`
 
