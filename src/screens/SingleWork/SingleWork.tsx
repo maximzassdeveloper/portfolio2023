@@ -12,10 +12,7 @@ interface SingleWorkProps {
 }
 
 export const SingleWork: FC<SingleWorkProps> = ({ work, nextWork }) => {
-  const renderTemplate = () => {
-    const Content = WorkTemplate[work.slug]
-    return Content ? <Content /> : null
-  }
+  const Content = WorkTemplate[work.slug]
 
   return (
     <Main>
@@ -39,7 +36,6 @@ export const SingleWork: FC<SingleWorkProps> = ({ work, nextWork }) => {
           <Typography
             className={s.title}
             level='h1'
-            animate
             data-scroll
             data-scroll-speed='2'
           >
@@ -85,7 +81,7 @@ export const SingleWork: FC<SingleWorkProps> = ({ work, nextWork }) => {
             )}
           </div>
 
-          <div className={s.content}>{renderTemplate()}</div>
+          <div className={s.content}>{Content && <Content />}</div>
         </Container>
 
         <NextWork work={nextWork} />
