@@ -33,8 +33,9 @@ export const useExperienceAnimations = () => {
       const block = blocks[i]
       const line = block.querySelector('.' + sItem.line)
       if (!line) continue
+
       tl.to(line, {
-        height: 'calc(100% - 40px)',
+        scaleY: 1,
         onComplete() {
           const nextBlock = blocks[i + 1]
           nextBlock?.classList.add(sItem.animated)
