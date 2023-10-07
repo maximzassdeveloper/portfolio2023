@@ -43,13 +43,4 @@ export const works: IWork[] = [
     role: ['Дизайн', 'Фронтенд', 'Бэкенд'],
     stack: ['TypeScript', 'Next.js', 'Node.js', 'PosgreSQL'],
   },
-  {
-    id: 3,
-    slug: 'business-course',
-    name: 'Сайт бизнес-курса',
-    desc: 'Бизнес-курс “Искусство личных продаж МЛМ-предпринимателя 2022”.',
-    preview: 'business-course/preview.webp',
-    color: 'radial-gradient(#FFA53C, #FF3C3C)',
-    role: ['Дизайн', 'Разработка'],
-  },
 ]
