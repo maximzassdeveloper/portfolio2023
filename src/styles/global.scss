@@ -1,0 +1,186 @@
+:root {
+	--background: #0c0c0c;
+	--main: #e0dbd2;
+	--grey: #a3a3a3;
+	--line-grey: #373737;
+	--purple: #907ff8;
+	--cyan: #a8ffff;
+	--blue1: #7196ff;
+	--blue2: #2a5ee8;
+
+	--primary: #517df5;
+	--primary1: var(--blue1);
+	--primary2: var(--blue2);
+
+	--button-color: #ffffff;
+	--button-background: rgba(17, 17, 17, 0.6);
+
+	--header-background: rgba(17, 17, 17, 0.4);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none !important;
+	line-height: 1.25em;
+	font-family: var(--font-manrope);
+	color: var(--main);
+	-webkit-tap-highlight-color: transparent;
+}
+
+*::selection {
+	background: transparent;
+	color: var(--primary);
+}
+
+*::-moz-selection {
+	background: transparent;
+	color: var(--primary);
+}
+
+img::selection {
+	background: #fff;
+}
+
+img::-moz-selection {
+	background: #fff;
+}
+
+body,
+html {
+	background: var(--background);
+}
+
+.overflow-hidden {
+	overflow: hidden !important;
+}
+
+.scrollbar-track {
+	background: rgba(35, 35, 35, 0.8) !important;
+}
+
+.scrollbar-track-y {
+	width: 4px !important;
+}
+
+.scrollbar-track-x {
+	height: 4px !important;
+}
+
+.scrollbar-thumb {
+	background: rgba(55, 55, 55, 0.5) !important;
+	border-radius: 0px !important;
+}
+
+.scrollbar-thumb-y {
+	width: 4px !important;
+}
+
+.scrollbar-thumb-x {
+	height: 4px !important;
+}
+
+a,
+label,
+input,
+textarea,
+button,
+body {
+	cursor: none;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	min-height: 100vh;
+
+	main {
+		flex: auto;
+	}
+
+	.notfound-main {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+h1,
+h2,
+h3,
+p,
+p > div {
+	font-weight: 400;
+}
+
+h1 {
+	font-size: 40px;
+}
+
+h2 {
+	font-size: 34px;
+}
+
+ul,
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	line-height: 1.5em;
+}
+
+button {
+	background: none;
+	border: none;
+	box-shadow: none;
+}
+
+input,
+textarea {
+	border: none;
+	box-shadow: none;
+	outline: none;
+	background: none;
+	max-width: 100%;
+	width: 100%;
+}
+
+textarea {
+	min-height: 40px;
+	max-height: 110px;
+	min-width: 100%;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.c-scrollbar_thumb {
+	background: #fff;
+	z-index: 999;
+}
+
+@media screen and (max-width: 992px) {
+	body,
+	html {
+		overflow-x: hidden;
+	}
+	a,
+	label,
+	input,
+	textarea,
+	button,
+	body {
+		cursor: initial;
+	}
+	a,
+	button {
+		cursor: pointer;
+	}
+}

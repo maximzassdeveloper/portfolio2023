@@ -1,0 +1,37 @@
+.image {
+  position: relative;
+  margin-bottom: 60px;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1020px;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  .col {
+    padding: 20px;
+  }
+}
+.center {
+  margin-right: auto;
+  margin-left: auto;
+}
+.left {
+  margin-right: auto;
+}
+.right {
+  margin-left: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .image {
+    border-radius: 0px;
+  }
+  .row {
+    flex-direction: column;
+    .col {
+      padding: 0;
+    }
+  }
+}

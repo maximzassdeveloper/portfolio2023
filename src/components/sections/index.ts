@@ -1,0 +1,6 @@
+export { FirstSection } from './FirstSection/FirstSection'
+export { AboutSection } from './AboutSection/AboutSection'
+export { ContactSection } from './ContactSection/ContactSection'
+export { WorksSection } from './WorksSection/WorksSection'
+export { ExperienceSection } from './ExperienceSection/ExperienceSection'
+export { ThreeJsSection } from './ThreeJsSection/ThreeJsSection'

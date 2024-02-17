@@ -1,0 +1,172 @@
+.first {
+	padding: 150px 0 70px;
+	margin-bottom: 100px;
+	z-index: 1;
+	position: relative;
+}
+
+.title {
+	font-size: 80px;
+	line-height: 1.125em;
+	width: max-content;
+	text-transform: uppercase;
+
+	.line {
+		transform: rotateX(-80deg) translateY(50%);
+		opacity: 0;
+	}
+
+	&.firstPart {
+		margin-top: 30px;
+
+		.line {
+			position: relative;
+			line-height: inherit;
+
+			&:nth-child(2) {
+				margin-left: 210px;
+			}
+		}
+	}
+
+	&.secondPart {
+		margin: -20px 0 0 auto;
+		text-align: right;
+
+		.line {
+			position: relative;
+			line-height: inherit;
+
+			&:first-child {
+				&:after {
+					content: '';
+					position: absolute;
+					display: block;
+					height: 4px;
+					width: 14%;
+					top: 50%;
+					background: var(--main);
+					left: 15px;
+					transform: translateY(-50%);
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.first {
+		margin-bottom: 400px;
+	}
+
+	.title {
+		font-size: 70px;
+
+		&.firstPart {
+			& .line:nth-child(2) {
+				margin-left: 170px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.title {
+		font-size: 60px;
+
+		&.firstPart {
+			& .line:nth-child(2) {
+				margin-left: 140px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.first {
+		padding-top: 87px;
+	}
+
+	.content {
+		display: flex;
+		justify-content: center;
+	}
+
+	.title {
+		font-size: 50px;
+
+		&.firstPart {
+			margin: 0px;
+
+			& .line:nth-child(2) {
+				margin-left: 130px;
+			}
+		}
+
+		&.secondPart {
+			margin: 1.125em 0 0 10px;
+		}
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.title {
+		font-size: 40px;
+
+		&.firstPart {
+			& .line:nth-child(2) {
+				margin-left: 100px;
+			}
+		}
+
+		&.secondPart {
+			& .line:first-child {
+				&:after {
+					height: 3px;
+					left: 5px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.title {
+		font-size: 30px;
+
+		&.firstPart {
+			& .line:nth-child(2) {
+				margin-left: 75px;
+			}
+		}
+
+		&.secondPart {
+			& .line:first-child {
+				&:after {
+					height: 2px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.title {
+		font-size: 26px;
+
+		&.firstPart {
+			& .line:nth-child(2) {
+				margin-left: 60px;
+			}
+		}
+
+		&.secondPart {
+			& .line:first-child {
+				&:after {
+					height: 2px;
+					left: 3px;
+				}
+			}
+		}
+	}
+}

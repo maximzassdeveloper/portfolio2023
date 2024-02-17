@@ -1,0 +1,1 @@
+export { SingleWork } from './SingleWork'

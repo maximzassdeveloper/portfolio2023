@@ -1,0 +1,158 @@
+.item {
+  position: relative;
+  display: flex;
+  padding-bottom: 40px;
+  margin-bottom: 60px;
+
+  &.animated {
+    .number {
+      animation: numberAnimation 1s forwards;
+    }
+  }
+}
+
+.line {
+  position: absolute;
+  display: block;
+  width: 1px;
+  height: calc(100% - 40px);
+  transform-origin: top;
+  transform: scaleY(0);
+  background: var(--line-grey);
+  left: 34px;
+  top: 84px;
+}
+
+.content {
+  margin-top: 30px;
+}
+
+.number {
+  width: 70px;
+  height: 70px;
+  border-radius: 24px;
+  margin-right: 25px;
+  border: 1px solid var(--line-grey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  user-select: none;
+}
+
+.name {
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+
+.date,
+.position {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--grey);
+  font-size: 20px;
+}
+
+.desc {
+  display: block;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 400px;
+
+  * {
+    font-size: 16px;
+    line-height: 1.4em;
+  }
+
+  p,
+  li {
+    margin-bottom: 5px;
+  }
+
+  ul {
+    margin: 5px 0;
+  }
+
+  li {
+    position: relative;
+    margin-left: 20px;
+
+    &::before {
+      content: '-';
+      position: absolute;
+      top: 0;
+      line-height: 1.4em;
+      left: -12px;
+    }
+  }
+}
+
+@keyframes numberAnimation {
+  0% {
+    filter: none;
+    box-shadow: none;
+  }
+  50% {
+    border-color: var(--primary);
+    filter: drop-shadow(0px 0px 8px #2a5ee8) drop-shadow(0px 0px 20px rgba(113, 150, 255, 0.8))
+      drop-shadow(0px 4px 30px rgba(42, 94, 232, 1));
+  }
+  100% {
+    border-color: var(--primary);
+    filter: drop-shadow(0px 0px 4px #2a5ee8) drop-shadow(0px 0px 10px rgba(113, 150, 255, 0.5))
+      drop-shadow(0px 4px 20px rgba(42, 94, 232, 0.7));
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .item {
+    flex-direction: column;
+    padding-bottom: 0px;
+  }
+
+  .content {
+    margin-top: 20px;
+    margin-left: 0;
+  }
+
+  .number {
+    border-radius: 15px 15px 15px 10px;
+    margin-left: 0x;
+
+    border-color: var(--primary);
+    filter: drop-shadow(0px 0px 4px #2a5ee8) drop-shadow(0px 0px 10px rgba(113, 150, 255, 0.5))
+      drop-shadow(0px 4px 20px rgba(42, 94, 232, 0.7));
+  }
+
+  .line {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .item {
+    margin-bottom: 40px;
+  }
+
+  .number {
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+  }
+
+  .line {
+    top: 64px;
+  }
+
+  .date,
+  .position {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+  .desc {
+    * {
+      font-size: 14px;
+    }
+  }
+}

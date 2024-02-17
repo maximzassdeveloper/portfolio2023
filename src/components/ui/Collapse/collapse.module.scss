@@ -1,0 +1,45 @@
+.collapse {
+  position: relative;
+  width: 400px;
+  max-width: 100%;
+  user-select: none;
+
+  &.isOpen {
+    .toggler {
+      img {
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
+
+.header {
+  padding: 10px 0;
+}
+
+.content {
+  margin-top: 5px;
+  width: inherit;
+  overflow: hidden;
+  transition: height 0.2s;
+  font-size: 20px;
+  line-height: 1.25em;
+}
+
+.toggler {
+  display: flex;
+  align-items: center;
+  color: var(--grey);
+  transition: 0.2s;
+
+  img {
+    height: 20px;
+    width: 20px;
+    transition: 0.2s;
+    margin-right: 10px;
+  }
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
