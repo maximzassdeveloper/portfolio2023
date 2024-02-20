@@ -1,67 +1,75 @@
 .cursor {
-	position: absolute;
-	z-index: 1000;
-	width: 14px;
-	height: 14px;
-	background: #fff;
-	border-radius: 50%;
-	pointer-events: none;
-	transform: translate(-50%, -50%);
-	mix-blend-mode: difference;
-	transition: width 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-		height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-		transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	&.click {
-		width: 30px;
-		height: 30px;
-		opacity: 0.9;
-	}
-			transform: scale(0);
-	}
+  position: absolute;
+  z-index: 1000;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  transition: width 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  &.click {
+    width: 30px;
+    height: 30px;
+    opacity: 0.9;
+  }
+
+  &.hide-inner {
+    .cursorInner {
+      transform: scale(0);
+    }
+  }
 }
 
 .cursorInner {
-	width: 100%;
-	height: 100%;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border: 1px solid #fff;
-	transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	&:after {
-		content: '';
-		font-size: 18px;
-		color: #fff;
-		transform: scale(0);
-		transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-		transition-delay: 0.1s;
-	}
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #fff;
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  &:after {
+    content: '';
+    font-size: 18px;
+    color: #fff;
+    transform: scale(0);
+    transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition-delay: 0.1s;
+  }
 }
 
 .hoverLink {
-	width: 10px;
-	height: 10px;
-	.cursorInner {
-		height: 100px;
-		width: 100px;
-		transform: translate(-45px, -45px);
-	}
+  width: 10px;
+  height: 10px;
+
+  .cursorInner {
+    height: 100px;
+    width: 100px;
+    transform: translate(-45px, -45px);
+  }
 }
 
 .hoverWork {
-	mix-blend-mode: normal;
+  mix-blend-mode: normal;
 }
 
 .hoverInput {
-	width: 2px;
-	&.click {
-		width: 3px;
-	}
+  width: 2px;
+
+  &.click {
+    width: 3px;
+  }
 }
 
 @media screen and (max-width: 992px) {
-	.cursor {
-		display: none;
-	}
+  .cursor {
+    display: none;
+  }
 }
