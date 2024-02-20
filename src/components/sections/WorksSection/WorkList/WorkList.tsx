@@ -1,8 +1,8 @@
-import { FC, useState } from 'react'
+import { FC, useRef, useState } from 'react'
 import { Work } from '../Work/Work'
-import { useAppContext } from '@/shared/context'
 import { WorkHover } from '../WorkHover/WorkHover'
 import { IWork } from '@/shared/types'
+import { useCursorHover } from '@/components/ui/CustomCursor'
 import s from './work-list.module.scss'
 
 interface WorkListProps {
@@ -11,25 +11,25 @@ interface WorkListProps {
 
 export const WorkList: FC<WorkListProps> = (props) => {
   const { works } = props
-  const { cursorRef } = useAppContext()
-  const [workIndex, setWorkIndex] = useState<number>(-1)
+  const [workIndex, setWorkIndex] = useState(-1)
+  const worksListRef = useRef<HTMLDivElement>(null)
+
+  useCursorHover({
+    el: worksListRef.current,
+    cursorClass: 'hoverWork',
+    onMouseLeave: () => {
+      setWorkIndex(-1)
+    },
+  })
 
   const onMouseEnterWork = (index: number) => {
     setWorkIndex(index)
-    if (!cursorRef.current) return
-    cursorRef.current.style.mixBlendMode = 'normal'
-  }
-
-  const onMouseLeaveWorks = () => {
-    setWorkIndex(-1)
-    if (!cursorRef.current) return
-    cursorRef.current.style.mixBlendMode = 'difference'
   }
 
   return (
     <div
+      ref={worksListRef}
       className={s.worksList}
-      onMouseLeave={onMouseLeaveWorks}
     >
       <WorkHover
         workIndex={workIndex}

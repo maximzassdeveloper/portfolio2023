@@ -1,10 +1,10 @@
-import { useRouter } from 'next/router'
+'use client'
+
 import { FC, useCallback, useEffect } from 'react'
 import { useAppContext } from '@/shared/context/AppContext'
 import s from './cursor.module.scss'
 
 export const CustomCursor: FC = () => {
-  const router = useRouter()
   const { cursorRef: cursor } = useAppContext()
 
   const onDocumentMouseMove = useCallback(
@@ -23,13 +23,6 @@ export const CustomCursor: FC = () => {
   const onDocumentMouseUp = useCallback(() => {
     cursor.current?.classList.remove(s.click)
   }, [cursor])
-
-  useEffect(() => {
-    // Clean classes on change page
-    if (!cursor.current) return
-    cursor.current.className = s.cursor
-    cursor.current.style.background = '#fff'
-  }, [router.pathname, cursor])
 
   useEffect(() => {
     document.addEventListener('mousemove', onDocumentMouseMove)

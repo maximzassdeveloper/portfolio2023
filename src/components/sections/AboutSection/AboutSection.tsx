@@ -1,3 +1,5 @@
+'use client'
+
 import { FC } from 'react'
 import { Section, Typography } from '@/components/ui'
 import { classNames } from '@/shared/libs/classNames'

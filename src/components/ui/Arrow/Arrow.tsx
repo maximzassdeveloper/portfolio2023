@@ -1,3 +1,5 @@
+'use client'
+
 import { forwardRef, useRef } from 'react'
 import Image from 'next/image'
 
@@ -5,7 +7,7 @@ import s from './arrow.module.scss'
 import { useAppContext } from '@/shared/context'
 import { LocoScrollAttrs } from '@/shared/types'
 import { useMagnetic } from '@/shared/hooks/useMagnetic'
-import { useCursorHover } from '@/shared/hooks/useCursorHover'
+import { useCursorHover } from '@/components/ui/CustomCursor/useCursorHover'
 import { composeRef } from '@/shared/libs/composeRef'
 import { classNames } from '@/shared/libs/classNames'
 import { imgPath } from '@/shared/libs/helper'

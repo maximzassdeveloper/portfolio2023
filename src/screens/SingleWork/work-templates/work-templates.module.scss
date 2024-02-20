@@ -1,4 +1,5 @@
 .image {
+<<<<<<< HEAD
   position: relative;
   margin-bottom: 60px;
   border-radius: 5px;
@@ -35,3 +36,42 @@
     }
   }
 }
+=======
+	position: relative;
+	margin-bottom: 60px;
+	border-radius: 5px;
+	overflow: hidden;
+	width: 100% !important;
+	height: auto !important;
+	max-width: 1020px !important;
+}
+.row {
+	display: flex;
+	justify-content: space-between;
+	.col {
+		padding: 20px;
+	}
+}
+.center {
+	margin-right: auto;
+	margin-left: auto;
+}
+.left {
+	margin-right: auto;
+}
+.right {
+	margin-left: auto;
+}
+
+@media screen and (max-width: 768px) {
+	.image {
+		border-radius: 0px;
+	}
+	.row {
+		flex-direction: column;
+		.col {
+			padding: 0;
+		}
+	}
+}
+>>>>>>> next13

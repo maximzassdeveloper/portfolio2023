@@ -1,6 +1,7 @@
 .contact {
   margin-top: 50px;
   padding: 150px 0;
+
   .container {
     display: flex;
     justify-content: space-between;
@@ -23,20 +24,25 @@
 .form {
   max-width: 560px;
   width: 100%;
+
   .line {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+
     & > * {
       width: 48%;
     }
   }
+
   .button {
     margin-bottom: 30px;
   }
+
   .text {
     font-size: 14px;
     color: grey;
+
     a {
       text-decoration: underline;
     }

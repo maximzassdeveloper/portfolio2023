@@ -1,13 +1,15 @@
+'use client'
+
 import { FC } from 'react'
 import { AboutSection, ExperienceSection } from '@/components/sections'
-import { Main } from '@/components/ui'
+import { Page } from '@/components/Page'
 import s from './about.module.scss'
 
 export const About: FC = () => {
   return (
-    <Main title='Обо мне'>
+    <Page>
       <AboutSection className={s.about} />
       <ExperienceSection className={s.experience} />
-    </Main>
+    </Page>
   )
 }

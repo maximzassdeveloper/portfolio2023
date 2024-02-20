@@ -2,7 +2,7 @@ import { CSSProperties, ReactNode, useEffect, useRef, useState } from 'react'
 import { classNames } from '@/shared/libs/classNames'
 import { imgPath } from '@/shared/libs/helper'
 import s from './collapse.module.scss'
-import { useCursorHover } from '@/shared/hooks/useCursorHover'
+import { useCursorHover } from '@/components/ui/CustomCursor/useCursorHover'
 
 interface CollapseProps {
   title?: string

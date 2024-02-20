@@ -1,13 +1,11 @@
-import LocomotiveScroll from 'locomotive-scroll'
-import { createContext, useContext, RefObject } from 'react'
+'use client'
 
-export type CustomLocomotiveScroll = LocomotiveScroll & {
-  off: (eventName: string, callback: (...args: any[]) => void) => void
-}
+import { createContext, useContext, RefObject } from 'react'
+import { Scrollbar } from 'smooth-scrollbar/scrollbar'
 
 export interface AppContextValue {
-  locoScroll: CustomLocomotiveScroll | null
-  setLocoScroll: (locoScroll: CustomLocomotiveScroll | null) => void
+  smoothScroll: Scrollbar | null
+  setSmoothScroll: (smoothScroll: Scrollbar | null) => void
   cursorRef: RefObject<HTMLDivElement>
 }
 

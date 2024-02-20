@@ -1,3 +1,5 @@
+'use client'
+
 import { FC } from 'react'
 import {
   AboutSection,
@@ -6,7 +8,7 @@ import {
   FirstSection,
   WorksSection,
 } from '@/components/sections'
-import { Main } from '@/components/ui'
+import { Page } from '@/components/Page'
 import { IWork } from '@/shared/types'
 import { works } from '@/shared/data'
 
@@ -16,12 +18,12 @@ interface HomeProps {
 
 export const Home: FC<HomeProps> = () => {
   return (
-    <Main>
+    <Page>
       <FirstSection />
       <AboutSection />
       <ExperienceSection />
       <WorksSection works={works} />
       <ContactSection />
-    </Main>
+    </Page>
   )
 }

@@ -1,4 +1,5 @@
 import { FC, useEffect, useMemo, useRef, useState } from 'react'
+import { ScrollStatus } from 'smooth-scrollbar/interfaces'
 import { Button, CustomLink, NavList, Container } from '@/components/ui'
 
 import { headerAnimations } from './headerAnimation'
@@ -13,7 +14,7 @@ export const Header: FC = () => {
   const header = useRef<HTMLDivElement>(null)
   const oldY = useRef(0)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const { locoScroll } = useAppContext()
+  const { smoothScroll } = useAppContext()
 
   const animations = useMemo(() => headerAnimations(), [])
   useAnimation(() => {
@@ -38,24 +39,24 @@ export const Header: FC = () => {
   }
 
   // Show header on scroll up
-  const onScroll = (e: LocomotiveScroll.OnScrollEvent) => {
+  const onScroll = (status: ScrollStatus) => {
     if (!header.current) return
-    if (e.scroll.y > header.current.offsetHeight && e.scroll.y > oldY.current) {
+    if (status.offset.y > header.current.offsetHeight && status.offset.y > oldY.current) {
       header.current.classList.add(s.hidden)
     } else {
       header.current.classList.remove(s.hidden)
     }
-    oldY.current = e.scroll.y
+    oldY.current = status.offset.y
   }
 
   useEffect(() => {
-    locoScroll?.on('scroll', onScroll)
+    smoothScroll?.addListener(onScroll)
     header.current?.classList.remove(s.hidden)
 
     return () => {
-      locoScroll?.off('scroll', onScroll)
+      smoothScroll?.removeListener(onScroll)
     }
-  }, [locoScroll])
+  }, [smoothScroll])
 
   return (
     <>

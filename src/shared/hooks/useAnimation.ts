@@ -3,22 +3,22 @@ import { useAppContext } from '../context'
 import { useLatest } from './useLatest'
 
 export const useAnimation = (callback: (...args: any[]) => void, animate: boolean = true) => {
-  const { locoScroll } = useAppContext()
+  const { smoothScroll } = useAppContext()
   const latestCallback = useLatest(callback)
 
   useEffect(() => {
     const handler = () => {
-      latestCallback.current()
+      if (animate && smoothScroll) {
+        latestCallback.current()
+      }
     }
 
-    if (!!locoScroll && animate) {
-      handler()
-    }
+    handler()
 
     window.addEventListener('resize', handler)
 
     return () => {
       window.removeEventListener('resize', handler)
     }
-  }, [latestCallback, locoScroll, animate])
+  }, [latestCallback, smoothScroll, animate])
 }

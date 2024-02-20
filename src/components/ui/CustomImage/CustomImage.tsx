@@ -1,5 +1,5 @@
 import { FC, useRef } from 'react'
-import { ImageProps } from 'next/image'
+import Image, { ImageProps } from 'next/image'
 import { imageAnimation } from './imageAnimation'
 import { useAnimation } from '@/shared/hooks/useAnimation'
 import { classNames } from '@/shared/libs/classNames'
@@ -18,7 +18,8 @@ export const CustomImage: FC<CustomImageProps> = ({
   animate = true,
   dataScrollSpeed,
   alt = '',
-  src,
+  width,
+  height,
   style,
   ...rest
 }) => {
@@ -27,22 +28,19 @@ export const CustomImage: FC<CustomImageProps> = ({
   useAnimation(() => imageAnimation(ref), animate)
 
   return (
-    <div
+    <span
       ref={ref}
       className={classNames(s.image, className)}
       data-scroll={dataScroll}
       data-scroll-speed={dataScrollSpeed}
-      style={style}
+      style={{ width, height, ...style }}
     >
-      <img
-        alt={alt}
-        src={src}
+      <Image
         {...rest}
+        alt={alt}
+        width={width}
+        height={height}
       />
-      {/* 
-        Not Next Image, because bad work with locomotive scroll
-        <Image {...rest} alt={alt} /> 
-      */}
-    </div>
+    </span>
   )
 }

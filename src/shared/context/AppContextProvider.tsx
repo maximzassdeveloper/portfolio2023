@@ -1,21 +1,23 @@
+'use client'
+
 import { ReactNode, useMemo, useRef, useState } from 'react'
-import { AppContext, AppContextValue, CustomLocomotiveScroll } from './AppContext'
+import { AppContext, AppContextValue } from './AppContext'
 
 interface AppContextProviderProps {
   children: ReactNode
 }
 
 export const AppContextProvider = ({ children }: AppContextProviderProps) => {
-  const [locoScroll, setLocoScroll] = useState<CustomLocomotiveScroll | null>(null)
+  const [smoothScroll, setSmoothScroll] = useState<AppContextValue['smoothScroll']>(null)
   const cursorRef = useRef<HTMLDivElement>(null)
 
   const defaultValue: AppContextValue = useMemo(
     () => ({
-      locoScroll,
-      setLocoScroll,
+      smoothScroll,
+      setSmoothScroll,
       cursorRef,
     }),
-    [locoScroll]
+    [smoothScroll]
   )
 
   return <AppContext.Provider value={defaultValue}>{children}</AppContext.Provider>

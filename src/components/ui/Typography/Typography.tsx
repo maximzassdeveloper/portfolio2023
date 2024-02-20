@@ -8,11 +8,7 @@ import s from './typography.module.scss'
 
 interface TypographyProps extends LocoScrollAttrs, HTMLAttributes<HTMLElement> {
   level?: 'h1' | 'h2' | 'h3' | 'p'
-  animate?:
-    | boolean
-    | {
-        splitText?: boolean
-      }
+  animate?: boolean | { splitText?: boolean }
   lineClassName?: string
   className?: string
   children?: ReactNode

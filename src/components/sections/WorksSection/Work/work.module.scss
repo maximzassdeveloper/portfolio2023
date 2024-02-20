@@ -14,9 +14,16 @@
   }
 }
 
-.image {
+.imageContainer {
   margin-top: 20px;
   display: none;
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+.image {
+  object-fit: cover;
 }
 
 .title {
@@ -24,8 +31,14 @@
 }
 
 @media screen and (max-width: 992px) {
-  .image {
+  .imageContainer {
     display: block;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .imageContainer {
+    height: 300px;
   }
 }
 
@@ -33,6 +46,7 @@
   .content {
     padding-left: 5%;
   }
+
   .title {
     font-size: 24px;
   }
@@ -41,5 +55,9 @@
 @media screen and (max-width: 500px) {
   .title {
     font-size: 22px;
+  }
+
+  .imageContainer {
+    height: 200px;
   }
 }

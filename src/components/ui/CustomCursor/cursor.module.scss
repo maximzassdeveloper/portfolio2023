@@ -16,10 +16,7 @@
 		height: 30px;
 		opacity: 0.9;
 	}
-	&.hide-inner {
-		.cursorInner {
 			transform: scale(0);
-		}
 	}
 }
 
@@ -53,20 +50,7 @@
 }
 
 .hoverWork {
-	width: 150px;
-	height: 150px;
-	box-shadow: 0 0 10px rgba(rgb(8, 8, 8), 0.5);
 	mix-blend-mode: normal;
-	.cursorInner {
-		display: flex;
-		align-items: center;
-		border: none;
-		&:after {
-			content: 'Подробнее';
-			text-align: center;
-			transform: scale(1);
-		}
-	}
 }
 
 .hoverInput {

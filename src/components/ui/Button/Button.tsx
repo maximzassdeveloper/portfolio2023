@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes, forwardRef, ReactNode, useRef } from 'react'
 import { classNames } from '@/shared/libs/classNames'
 import { composeRef } from '@/shared/libs/composeRef'
 import { useMagnetic } from '@/shared/hooks/useMagnetic'
-import { useCursorHover } from '@/shared/hooks/useCursorHover'
+import { useCursorHover } from '@/components/ui/CustomCursor/useCursorHover'
 import s from './button.module.scss'
 
 interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {

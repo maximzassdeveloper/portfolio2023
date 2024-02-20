@@ -1,8 +1,16 @@
+'use client'
+
 import { FC, useEffect, useState } from 'react'
 import { Typography, SocialList, Section } from '@/components/ui'
 import s from './contact.module.scss'
+import { classNames } from '@/shared/libs/classNames'
 
-export const ContactSection: FC = () => {
+interface ContactSectionProps {
+  className?: string
+}
+
+export const ContactSection: FC<ContactSectionProps> = (props) => {
+  const { className } = props
   const [linkArrowSize, setLinkArrowSize] = useState(20)
 
   useEffect(() => {
@@ -14,7 +22,7 @@ export const ContactSection: FC = () => {
   return (
     <Section
       id='contact'
-      className={s.contact}
+      className={classNames(s.contact, className)}
       containerClassName={s.container}
     >
       <div className={s.info}>
