@@ -11,7 +11,6 @@
   "dependencies": {
     "axios": "^1.4.0",
     "gsap": "^3.11.5",
-    "locomotive-scroll": "^4.1.4",
     "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18",
@@ -22,7 +21,6 @@
     "three": "^0.84.0"
   },
   "devDependencies": {
-    "@types/locomotive-scroll": "^4.1.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
