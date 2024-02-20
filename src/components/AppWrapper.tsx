@@ -26,11 +26,13 @@ export const AppWrapper = (props: AppWrapperProps) => {
 				<CustomCursor />
 				<SmoothScrollbar scrollContainer={scrollContainer} />
 
-				{isHome && <ThreeJsSection />}
 				<Header />
+				{isHome && <ThreeJsSection />}
 				<div ref={scrollContainer}>
-					<main>{children}</main>
-					<Footer />
+					<div>
+						{children}
+						<Footer />
+					</div>
 				</div>
 			</div>
 		</AppContextProvider>

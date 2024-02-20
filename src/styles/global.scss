@@ -95,16 +95,6 @@ body {
 	flex-direction: column;
 	height: 100vh;
 	min-height: 100vh;
-
-	main {
-		flex: auto;
-	}
-
-	.notfound-main {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
 }
 
 h1,
@@ -159,11 +149,6 @@ textarea {
 img {
 	max-width: 100%;
 	height: auto;
-}
-
-.c-scrollbar_thumb {
-	background: #fff;
-	z-index: 999;
 }
 
 @media screen and (max-width: 992px) {

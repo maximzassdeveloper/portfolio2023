@@ -1,4 +1,5 @@
 import { FC, useEffect, useMemo, useRef, useState } from 'react'
+import { ScrollStatus } from 'smooth-scrollbar/interfaces'
 import { Button, CustomLink, NavList, Container } from '@/components/ui'
 
 import { headerAnimations } from './headerAnimation'
@@ -8,7 +9,6 @@ import { filePath } from '@/shared/libs/helper'
 import { classNames } from '@/shared/libs/classNames'
 import { useAnimation } from '@/shared/hooks/useAnimation'
 import s from './header.module.scss'
-import { ScrollStatus } from 'smooth-scrollbar/interfaces'
 
 export const Header: FC = () => {
 	const header = useRef<HTMLDivElement>(null)

@@ -1,10 +1,11 @@
-import { FC, RefObject, useLayoutEffect } from 'react'
+import { FC, RefObject, useEffect } from 'react'
 import Scrollbar from 'smooth-scrollbar'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { CustomEase } from 'gsap/dist/CustomEase'
 import { useAppContext } from '@/shared/context'
 import { useWindowSize } from '@/shared/hooks/useWindowSize'
+import { usePathname } from 'next/navigation'
 
 gsap.registerPlugin(ScrollTrigger, CustomEase)
 
@@ -16,8 +17,9 @@ export const SmoothScrollbar: FC<SmoothScrollbarProps> = (props) => {
 	const { scrollContainer } = props
 	const { setSmoothScroll } = useAppContext()
 	const windowSize = useWindowSize()
+	const pathname = usePathname()
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		const container = scrollContainer.current
 		if (!container) return
 
@@ -60,7 +62,7 @@ export const SmoothScrollbar: FC<SmoothScrollbarProps> = (props) => {
 			ScrollTrigger.removeEventListener('refresh', smoothScrollUpdate)
 			ScrollTrigger.scrollerProxy(container)
 		}
-	}, [windowSize, scrollContainer, setSmoothScroll])
+	}, [windowSize, pathname, scrollContainer, setSmoothScroll])
 
 	return <></>
 }

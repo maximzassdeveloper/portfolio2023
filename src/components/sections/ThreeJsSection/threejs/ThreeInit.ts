@@ -1,10 +1,10 @@
 import { Mesh, Vector3 } from 'three'
+import { Power1, gsap } from 'gsap'
 import { ThreeScene } from './ThreeScene'
 import { ThreeSphere } from './ThreeSphere'
 import { isSimpleGeometry } from './utils'
 import { perlin } from './perlin'
 import { AnimationOptions, FpsOptions } from './types'
-import { Power1, gsap } from 'gsap'
 
 export class ThreeInit extends ThreeScene {
 	private sphere: Mesh
@@ -14,8 +14,8 @@ export class ThreeInit extends ThreeScene {
 	constructor(canvas: HTMLCanvasElement) {
 		super(canvas)
 
-		const sphere = new ThreeSphere()
-		this.sphere = sphere.sphere
+		const { sphere } = new ThreeSphere()
+		this.sphere = sphere
 		this.scene.add(this.sphere)
 
 		this.main()
@@ -184,7 +184,7 @@ export class ThreeInit extends ThreeScene {
 
 		/* --------- Experience block --------- */
 		timeline.to(this.lights.red, {
-			intensity: 0,
+			intensity: 0.4,
 			immediateRender: false,
 			scrollTrigger: {
 				trigger: '#experience',
@@ -221,36 +221,77 @@ export class ThreeInit extends ThreeScene {
 			ease: Power1.easeInOut,
 		})
 
-		/* --------- Works block --------- */
-		timeline.to(this.camera.position, {
-			x: -15,
+		timeline.to(this.sphere.rotation, {
+			x: 2,
+			z: 1,
 			immediateRender: false,
 			scrollTrigger: {
-				trigger: '#works',
-				start: 'top bottom',
-				end: 'top top',
+				trigger: '#experience',
+				start: '700px center',
+				end: 'bottom top',
 				scrub: true,
-				onLeave: () => {
-					this.sphere.visible = false
-					this.rerender()
-				},
-				onEnterBack: () => {
-					this.sphere.visible = true
-					this.rerender()
-				},
 			},
 			ease: Power1.easeInOut,
 		})
 
+		/* --------- Contact block --------- */
 		timeline.to(this.sphere.rotation, {
-			x: 2,
-			z: 3,
+			x: 0,
+			z: 0,
+			y: 0,
 			immediateRender: false,
 			scrollTrigger: {
-				trigger: '#works',
-				start: 'top bottom',
-				end: 'top top',
+				trigger: '#contact',
 				scrub: true,
+				start: 'top bottom',
+				end: 'bottom bottom',
+			},
+			ease: Power1.easeInOut,
+		})
+
+		timeline.to(this.lights.purple, {
+			intensity: 1,
+			immediateRender: false,
+			scrollTrigger: {
+				trigger: '#contact',
+				scrub: true,
+				start: '20% bottom',
+				end: 'bottom bottom',
+			},
+			ease: Power1.easeInOut,
+		})
+
+		timeline.to(this.lights.primary, {
+			intensity: 0,
+			immediateRender: false,
+			scrollTrigger: {
+				trigger: '#contact',
+				scrub: true,
+				start: '20% bottom',
+				end: 'bottom bottom',
+			},
+			ease: Power1.easeInOut,
+		})
+
+		timeline.to(this.lights.red, {
+			intensity: 0,
+			immediateRender: false,
+			scrollTrigger: {
+				trigger: '#contact',
+				scrub: true,
+				start: '30% bottom',
+				end: 'bottom bottom',
+			},
+			ease: Power1.easeInOut,
+		})
+
+		timeline.to(this.camera.position, {
+			immediateRender: false,
+			y: '-7',
+			scrollTrigger: {
+				start: '70% 80%',
+				scrub: true,
+				trigger: '#contact',
 			},
 			ease: Power1.easeInOut,
 		})
