@@ -9,16 +9,16 @@ const API_URL = `${BASE_URL}/api`
 axios.defaults.baseURL = API_URL
 
 interface GetWorkResponse {
-  work: IWork | null
-  nextWork: IWork | null
+	work: IWork | null
+	nextWork: IWork | null
 }
 
 export const workService = {
-  async getWorks() {
-    return axios.get<IWork[]>(`/works`)
-  },
+	async getWorks() {
+		return axios.get<IWork[]>(`/works`)
+	},
 
-  async getWork(slug: string) {
-    return axios.get<GetWorkResponse>(`/work/${slug}`)
-  },
+	async getWork(slug: string) {
+		return axios.get<GetWorkResponse>(`/works/${slug}`)
+	},
 }

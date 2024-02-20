@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import { Button } from '@/components/ui'
+import { ErrorPage } from '@/screens/ErrorPage'
 
 export default function Error({
 	error,
@@ -16,16 +17,6 @@ export default function Error({
 	}, [error])
 
 	return (
-		<div>
-			<h2>Something went wrong!</h2>
-			<Button
-				onClick={
-					// Attempt to recover by trying to re-render the segment
-					() => reset()
-				}
-			>
-				Try again
-			</Button>
-		</div>
+		<ErrorPage title='Something went wrong!' buttonText='Try again' onButtonClick={() => reset()} />
 	)
 }

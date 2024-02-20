@@ -16,7 +16,7 @@ export const Work: FC<WorkProps> = (props) => {
 
 	return (
 		<div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-			<CustomLink className={s.work} href={`/work/${work.slug}`} animateOnHover={false}>
+			<CustomLink className={s.work} href={`/works/${work.slug}`} animateOnHover={false}>
 				<Container>
 					<Typography className={s.title} animate level='h3'>
 						{work.name}

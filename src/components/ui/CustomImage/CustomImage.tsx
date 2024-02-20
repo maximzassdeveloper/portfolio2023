@@ -18,6 +18,8 @@ export const CustomImage: FC<CustomImageProps> = ({
 	animate = true,
 	dataScrollSpeed,
 	alt = '',
+	width,
+	height,
 	style,
 	...rest
 }) => {
@@ -31,9 +33,9 @@ export const CustomImage: FC<CustomImageProps> = ({
 			className={classNames(s.image, className)}
 			data-scroll={dataScroll}
 			data-scroll-speed={dataScrollSpeed}
-			style={style}
+			style={{ width, height, ...style }}
 		>
-			<Image {...rest} alt={alt} />
+			<Image {...rest} alt={alt} width={width} height={height} />
 		</span>
 	)
 }
