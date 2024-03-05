@@ -24,7 +24,7 @@ export const SmoothScrollbar: FC<SmoothScrollbarProps> = (props) => {
     if (!container) return
 
     const scrollbar = Scrollbar.init(container, {
-      damping: windowSize.width < 1200 ? 1 : 0.05,
+      damping: window.innerWidth < 1200 ? 1 : 0.05,
       delegateTo: document,
     })
 
