@@ -33,24 +33,8 @@ export const blocks: IExperience[] = [
     ),
   },
   {
-    name: 'Gemma Cosmetics',
-    date: 'Апрель 2022 - Август 2022',
-    position: 'Fullstack-разработчик',
-    desc: (
-      <>
-        <p>Разработал клиентскую и серверную части для интернет-магазина корейской косметики:</p>
-        <ul>
-          <li>Настроил CI/CD с Docker, Nginx</li>
-          <li>Сделал авторизацию с 2-мя JWT-токенами</li>
-        </ul>
-        <p>Стек на клиенте: Next.js, TypeScript, Redux, Docker</p>
-        <p>Стек на сервере: Express, TypeScript, PostgreSQL, Docker</p>
-      </>
-    ),
-  },
-  {
     name: 'Фриланс',
-    date: 'Июль 2021 - Март 2022',
+    date: 'Июль 2021 - Июль 2022',
     position: 'Frontend-разработчик',
     desc: (
       <>
