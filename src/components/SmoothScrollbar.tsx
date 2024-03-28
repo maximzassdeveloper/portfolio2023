@@ -1,11 +1,12 @@
 import { FC, RefObject, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import Scrollbar from 'smooth-scrollbar'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { CustomEase } from 'gsap/dist/CustomEase'
 import { useAppContext } from '@/shared/context'
 import { useWindowSize } from '@/shared/hooks/useWindowSize'
-import { usePathname } from 'next/navigation'
+import { isMobile } from '@/shared/libs/isMobile'
 
 gsap.registerPlugin(ScrollTrigger, CustomEase)
 
@@ -20,11 +21,17 @@ export const SmoothScrollbar: FC<SmoothScrollbarProps> = (props) => {
   const pathname = usePathname()
 
   useEffect(() => {
+    if (isMobile()) {
+      return
+    }
+
     const container = scrollContainer.current
     if (!container) return
 
+    container.style.height = '100vh'
+
     const scrollbar = Scrollbar.init(container, {
-      damping: window.innerWidth < 1200 ? 1 : 0.05,
+      damping: 0.05,
       delegateTo: document,
     })
 

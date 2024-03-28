@@ -19,7 +19,7 @@ export const Typography = (props: TypographyProps) => {
   const ref = useRef<HTMLHeadingElement>(null)
   const Tag = level ?? 'h2'
 
-  useAnimation(() => typographyAnimation(ref, lineClassName, !!animate))
+  useAnimation(() => setTimeout(() => typographyAnimation(ref, lineClassName, !!animate), 0))
 
   useEffect(() => {
     if (!animate || !ref.current) return
@@ -30,13 +30,17 @@ export const Typography = (props: TypographyProps) => {
       lineClass: classNames('line', lineClassName),
     })
 
-    const resizeObserver = new ResizeObserver(() => {
+    const onResize = () => {
       text.split({
         types: 'lines',
         lineClass: classNames('line', lineClassName),
       })
-    })
-    resizeObserver.observe(document.body)
+    }
+
+    document.body.addEventListener('resize', onResize)
+    return () => {
+      document.body.removeEventListener('resize', onResize)
+    }
   }, [animate, lineClassName])
 
   const classes = classNames(className, {

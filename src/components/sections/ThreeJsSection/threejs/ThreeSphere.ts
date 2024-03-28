@@ -29,7 +29,7 @@ export class ThreeSphere {
   }
 
   private getCountSegments() {
-    return window.innerWidth < 800 ? 35 : 40
+    return window.innerWidth < 800 ? 30 : 40
   }
 
   private initialSpherePosition() {
