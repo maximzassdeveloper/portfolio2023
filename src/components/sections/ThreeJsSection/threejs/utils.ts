@@ -14,7 +14,7 @@ function numberLimit(value: number, min?: number, max?: number) {
 }
 
 export function getWidth() {
-  return numberLimit(window.innerWidth, 600)
+  return numberLimit(window.innerWidth, 100)
 }
 
 export function getHeight() {

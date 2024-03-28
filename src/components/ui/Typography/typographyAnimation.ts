@@ -1,7 +1,6 @@
 import { RefObject } from 'react'
 import { gsap } from 'gsap'
 import { CustomEase } from 'gsap/dist/CustomEase'
-import s from './typography.module.scss'
 
 export const typographyAnimation = (
   ref: RefObject<HTMLHeadingElement>,
@@ -26,6 +25,5 @@ export const typographyAnimation = (
     opacity: 1,
     stagger: 0.08,
     ease: CustomEase.create('custom', 'M0,0 C0,0 0.025,0.603 0.45,0.84 0.694,0.976 1,1 1,1'),
-    onComplete: () => ref.current?.classList.add(s.detect),
   })
 }

@@ -5,6 +5,7 @@ import { ThreeSphere } from './ThreeSphere'
 import { isSimpleGeometry } from './utils'
 import { perlin } from './perlin'
 import { AnimationOptions, FpsOptions } from './types'
+import { isMobile } from '@/shared/libs/isMobile'
 
 export class ThreeInit extends ThreeScene {
   private sphere: Mesh
@@ -23,7 +24,7 @@ export class ThreeInit extends ThreeScene {
 
   public main() {
     this.startAnimating(60)
-    this.gsapAnimations()
+    // this.gsapAnimations()
   }
 
   private startAnimating(fps: number) {
@@ -131,6 +132,108 @@ export class ThreeInit extends ThreeScene {
 
     const timeline = gsap.timeline()
 
+    if (isMobile()) {
+      gsap.to(this.lights.primary, {
+        intensity: 2,
+        duration: 2,
+        ease: Power1.easeInOut,
+        delay: 0.5,
+      })
+
+      gsap.to(this.lights.primary2, {
+        intensity: 1.5,
+        duration: 1.5,
+        ease: Power1.easeInOut,
+        delay: 0.8,
+      })
+
+      timeline.to(this.lights.primary, {
+        intensity: 0.1,
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: '#textBlock1',
+          scrub: 1,
+          start: 'top center',
+          end: 'bottom bottom',
+        },
+        ease: Power1.easeInOut,
+      })
+
+      timeline.to(this.lights.primary2, {
+        intensity: 0.1,
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: '#textBlock1',
+          scrub: 1,
+          start: 'top center',
+          end: 'bottom bottom',
+        },
+        ease: Power1.easeInOut,
+      })
+
+      timeline.to(this.sphere.rotation, {
+        z: 1.2,
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: '#textBlock1',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+        },
+        ease: Power1.easeInOut,
+      })
+
+      timeline.to(this.sphere.rotation, {
+        x: 1.5,
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: '#experience',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+        },
+        ease: Power1.easeInOut,
+      })
+
+      timeline.to(this.sphere.rotation, {
+        z: 0,
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: '#works',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+        },
+        ease: Power1.easeInOut,
+      })
+
+      timeline.to(this.sphere.rotation, {
+        x: 0,
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: '#contact',
+          start: 'top bottom',
+          end: 'bottom center',
+          scrub: true,
+        },
+        ease: Power1.easeInOut,
+      })
+
+      timeline.to(this.lights.purple, {
+        intensity: 1,
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: '#contact',
+          scrub: true,
+          start: '20% bottom',
+          end: 'bottom bottom',
+        },
+        ease: Power1.easeInOut,
+      })
+
+      return
+    }
+
     /* --------- Fade primary lights on Home block --------- */
     gsap.to(this.lights.primary, {
       intensity: 2,
@@ -235,6 +338,7 @@ export class ThreeInit extends ThreeScene {
     })
 
     /* --------- Contact block --------- */
+
     timeline.to(this.sphere.rotation, {
       x: 0,
       z: 0,
